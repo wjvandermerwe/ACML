@@ -1,2 +1,1 @@
-# ACML_exercise
-Everything from practice labs to d2l handbook colabs etc.
+# ACML Course (Assignment, tests and materials)
