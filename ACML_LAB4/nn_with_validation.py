@@ -41,8 +41,8 @@ class MultiLayerPerceptron():
         self.weights2 -= (torch.matmul(self.hidden.T, self.delta_output) * self.lr -
                           (self.lr * self.lmbd * self.weights2))
 
-        self.biases1 -= torch.sum(self.delta_hidden) * self.lr
-        self.biases2 -= torch.sum(self.delta_output) * self.lr
+        self.biases1 -= torch.multiply(self.delta_hidden, self.lr)
+        self.biases2 -= torch.multiply(self.delta_output, self.lr)
 
     # def update_learn_rate(self, max_iterations, iteration):
         # self.lr -= 0.0009*(iteration/max_iterations)

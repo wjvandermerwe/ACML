@@ -40,4 +40,3 @@ test_labels = labels[q*3:num_rows_inputs]
 validation_labels = labels[q*2:q*3]
 training_labels = labels[0:q*2]
 
-print(data.metadata)

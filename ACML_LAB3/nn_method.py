@@ -36,7 +36,7 @@ class MultiLayerPerceptron():
         self.biases2 += torch.sum(self.delta_output) * self.lr
 
     def compute_loss(self, Y, output):
-        return torch.sum(0.5 * torch.square(Y-output)**2)
+        return torch.sum(0.5 * torch.square(output-Y)**2)
 
     def train(self, X, Y):
         output = self.forward(X)
