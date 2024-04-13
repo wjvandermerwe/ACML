@@ -50,7 +50,7 @@ def id3_tree(dataset, attributes):
         node = TreeNode(name=best_attr)
         new_attributes = attributes[:]
         new_attributes.remove(best_attr)
-        for value in dataset[best_attr]:
+        for value in dataset[best_attr].unique():
             subset = dataset[dataset[best_attr] == value].drop(columns=[best_attr])
             child_node = id3_tree(subset, new_attributes)
             node.add_child(value, child_node)
