@@ -96,10 +96,10 @@ def train_model(config):
         model.train()
         batch_iterator = tqdm(train_dataloader, desc=f"Processing Epoch {epoch:02d}")
         for batch in batch_iterator:
-            encoder_input = batch['encoder_input'].to(device)  # (b, seq_len)
-            decoder_input = batch['decoder_input'].to(device)  # (B, seq_len)
-            encoder_mask = batch['encoder_mask'].to(device)  # (B, 1, 1, seq_len)
-            decoder_mask = batch['decoder_mask'].to(device)  # (B, 1, seq_len, seq_len)
+            encoder_input = batch['encoder_input'].to(device)
+            decoder_input = batch['decoder_input'].to(device)
+            encoder_mask = batch['encoder_mask'].to(device)
+            decoder_mask = batch['decoder_mask'].to(device)
 
             # Run the tensors through the encoder, decoder and the projection layer
             encoder_output = model.encode(encoder_input, encoder_mask)  # (B, seq_len, d_model)
@@ -128,8 +128,8 @@ def train_model(config):
             global_step += 1
 
         # Run validation at the end of every epoch
-            run_validation(model, val_dataloader, tokenizer_src, tokenizer_tgt, config['seq_len'], device,
-                       lambda msg: batch_iterator.write(msg), global_step, board)
+        run_validation(model, val_dataloader, tokenizer_src, tokenizer_tgt, config['seq_len'], device,
+                   lambda msg: batch_iterator.write(msg), global_step, board)
 
         # Save the model at the end of every epoch
         model_filename = get_weights_file_path(config, f"{epoch:02d}")
